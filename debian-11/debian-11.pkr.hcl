@@ -9,8 +9,8 @@ packer {
 
 source "proxmox" "debian_11" {
   proxmox_url = var.proxmox_api
-  username    = var.proxmox_username
-  password    = var.proxmox_password
+  username    = format("%s!%s", var.proxmox_username, var.proxmox_token_id)
+  token       = var.proxmox_token_secret
   node        = var.proxmox_node
 
   memory  = 1024

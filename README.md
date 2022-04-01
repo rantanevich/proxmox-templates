@@ -22,16 +22,18 @@ packer init .
 packer build \
     -var "proxmox_api=https://example.com/api2/json" \
     -var "proxmox_node=pve" \
-    -var "proxmox_username=root" \
-    -var "proxmox_password=secret" \
+    -var "proxmox_username=root@pam" \
+    -var "proxmox_token_id=packer" \
+    -var "proxmox_token_secret=uuid" \
     .
 ```
 
 ```sh
 export PKR_VAR_proxmox_api=https://example.com/api2/json
 export PKR_VAR_proxmox_node=pve
-export PKR_VAR_proxmox_username=root
-export PKR_VAR_proxmox_password=secret
+export PKR_VAR_proxmox_username=root@pam
+export PKR_VAR_proxmox_token_id=packer
+export PKR_VAR_proxmox_token_secret=uuid
 
 packer build .
 ```
