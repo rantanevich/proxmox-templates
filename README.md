@@ -24,6 +24,7 @@ The `PROXMOX_USERNAME` must include the token id after an exclamation mark. For 
 
 ```sh
 export PROXMOX_URL='https://example.com/api2/json'
+export PROXMOX_NODE='pve'
 export PROXMOX_USERNAME='root@pam!packer'
 export PROXMOX_TOKEN='d5630abc-af97-4845-9439-d35d89058cc9'
 

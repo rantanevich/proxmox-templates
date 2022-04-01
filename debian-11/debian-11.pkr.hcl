@@ -8,7 +8,7 @@ packer {
 }
 
 source "proxmox" "debian_11" {
-  node = var.proxmox_node
+  node = coalesce(var.proxmox_node, "pve")
 
   memory  = 1024
   sockets = 1
