@@ -10,30 +10,22 @@ If you want to create an image, duplicate or go to directory with desired OS and
 
 1. Customize `http/preseed.cfg`, `bootstrap.sh` and `debian-11.pkr.hcl` files to suit your needs.
 
-2. Download Packer plugins
+2. Jump to the directory with Packer files (e.g. `debian-11/`)
+
+3. Download Packer plugins
 
 ```sh
 packer init .
 ```
 
-3. Runs build your image
+4. Runs build your image
+
+The `PROXMOX_USERNAME` must include the token id after an exclamation mark. For example, `user@pam!tokenid`
 
 ```sh
-packer build \
-    -var "proxmox_api=https://example.com/api2/json" \
-    -var "proxmox_node=pve" \
-    -var "proxmox_username=root@pam" \
-    -var "proxmox_token_id=packer" \
-    -var "proxmox_token_secret=uuid" \
-    .
-```
-
-```sh
-export PKR_VAR_proxmox_api=https://example.com/api2/json
-export PKR_VAR_proxmox_node=pve
-export PKR_VAR_proxmox_username=root@pam
-export PKR_VAR_proxmox_token_id=packer
-export PKR_VAR_proxmox_token_secret=uuid
+export PROXMOX_URL='https://example.com/api2/json'
+export PROXMOX_USERNAME='root@pam!packer'
+export PROXMOX_TOKEN='d5630abc-af97-4845-9439-d35d89058cc9'
 
 packer build .
 ```
