@@ -1,0 +1,35 @@
+# Use US layout with US variant
+KEYMAPOPTS="us us"
+
+# Set hostname to alpine-test
+HOSTNAMEOPTS="-n alpine-3"
+
+# Contents of /etc/network/interfaces
+INTERFACESOPTS="auto lo
+iface lo inet loopback
+
+auto eth0
+iface eth0 inet dhcp
+    hostname alpine-3
+"
+
+# Cloudflare public nameserver
+DNSOPTS="-n 1.1.1.1"
+
+# Set timezone to Europe/Minsk
+TIMEZONEOPTS="-z Europe/Minsk"
+
+PROXYOPTS="none"
+
+# Add a random mirror
+APKREPOSOPTS="http://mirror.yandex.ru/mirrors/alpine/v3.15/main
+http://mirror.yandex.ru/mirrors/alpine/v3.15/community"
+
+# Install Openssh
+SSHDOPTS="-c openssh"
+
+# Use chrony
+NTPOPTS="-c chrony"
+
+# Use /dev/sda as a sys disk
+DISKOPTS="-s 1024 -m sys /dev/sda"
