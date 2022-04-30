@@ -5,8 +5,8 @@ proxmox_node     = "pve"
 
 vm_id = 1000
 
-cores   = 4
-memory  = 4096
+cores  = 4
+memory = 4096
 
 cloud_init              = true
 cloud_init_storage_pool = "local-lvm"

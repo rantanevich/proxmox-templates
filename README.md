@@ -4,22 +4,20 @@ The repository will have Packer code to build base images from ISO files.
 
 
 
-# Usage
+## Usage
 
-If you want to create an image, duplicate or go to directory with desired OS and make the following steps:
+1. Copy `example.auto.pkrvars.hcl` to a new file with `*.auto.pkrvars.hcl` name.
 
-1. Jump to the directory with Packer files (e.g. `debian-11/`)
+1. Adjust variables in the new file and preseed and bootstrap scripts in the desired template for yourself.
 
-2. Customize `http/preseed.cfg`, `bootstrap.sh` and clone `example.pkrvars.hcl` to suit your needs.
-
-3. Download Packer plugins
+1. Download Packer plugins
 
 ```sh
 packer init .
 ```
 
-4. Runs build your image
+1. Runs build your image (e.g. `debian-11`)
 
-```sh
-packer build .
+```
+packer build -var-file=debian-11/template.pkrvars.hcl .
 ```

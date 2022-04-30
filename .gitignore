@@ -10,8 +10,8 @@ crash.log
 # version control as they are data points which are potentially sensitive and
 # subject to change depending on the environment.
 #
-*.pkrvars.hcl
-!example.pkrvars.hcl
+*.auto.pkrvars.hcl
+!example.auto.pkrvars.hcl
 
 # For built boxes
 *.box

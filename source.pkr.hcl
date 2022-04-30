@@ -1,13 +1,4 @@
-packer {
-  required_plugins {
-    proxmox = {
-      source  = "github.com/hashicorp/proxmox"
-      version = "~> 1.0"
-    }
-  }
-}
-
-source "proxmox" "debian_11" {
+source "proxmox" "base_image" {
   proxmox_url = var.proxmox_api
   username    = var.proxmox_username
   token       = var.proxmox_token
@@ -73,22 +64,7 @@ source "proxmox" "debian_11" {
   template_description = var.template_description
   unmount_iso          = true
 
-  http_directory = "./http"
-  boot_wait      = "10s"
-  boot_command = [
-    "<down><down><enter><wait>",
-    "<down><down><down><down><down><down><enter><wait1m>",
-    "http://{{ .HTTPIP }}:{{ .HTTPPort }}/preseed.cfg<enter><wait10m>",
-  ]
-}
-
-build {
-  sources = [
-    "source.proxmox.debian_11"
-  ]
-
-  provisioner "shell" {
-    pause_before = "10s"
-    script       = "bootstrap.sh"
-  }
+  http_directory = var.http_directory
+  boot_wait      = var.boot_wait
+  boot_command   = var.boot_command
 }

@@ -20,7 +20,6 @@ variable "proxmox_node" {
 }
 
 variable "iso_url" {
-  default     = "https://cdimage.debian.org/debian-cd/current/amd64/iso-cd/debian-11.3.0-amd64-netinst.iso"
   description = "URL to an ISO file to upload to Proxmox, and then boot from"
 }
 
@@ -30,7 +29,6 @@ variable "iso_storage_pool" {
 }
 
 variable "iso_checksum" {
-  default     = "sha256:7892981e1da216e79fb3a1536ce5ebab157afdd20048fe458f2ae34fbc26c19b"
   description = "Checksum of the ISO file"
 }
 
@@ -118,7 +116,6 @@ variable "disks" {
 }
 
 variable "template_name" {
-  default     = "debian-11"
   description = "Name of the template"
 }
 
@@ -130,4 +127,24 @@ variable "template_description" {
 variable "insecure_skip_tls_verify" {
   default     = false
   description = "Skip validating the certificate"
+}
+
+variable "http_directory" {
+  default     = ""
+  description = "Path to a directory to serve using an HTTP server"
+}
+
+variable "boot_wait" {
+  default     = "30s"
+  description = "The time which Packer waits before sending commands"
+}
+
+variable "boot_command" {
+  default     = []
+  description = "List of the keys to type when the virtual machine is first booted in order to start the OS installer"
+}
+
+variable "script" {
+  default     = ""
+  description = "The path to a script to upload and execute in the machine"
 }
